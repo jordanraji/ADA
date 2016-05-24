@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <vector>
 #include <math.h>
+#include <ctime>
 
 using namespace std;
 
@@ -82,14 +83,33 @@ void ExtendedBottomUpCutRod(int p[],int n){
     PrintCutRodSolution(s, n, r[n]);
 }
 
-
 int main(int argc, const char * argv[]) {
-//    int arr[] = {1, 5, 8, 9, 10, 17, 17, 20};
     int arr[] = {0, 1, 5, 8, 9, 10, 17, 17, 20, 24, 30};
     int size = sizeof(arr)/sizeof(arr[0]);
+    int start_s=clock();
     cout<<CutRod(arr,size)<<endl;
+    int stop_s=clock();
+    cout << "time: " << (stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 << endl;
+    start_s=clock();
     cout<<MemoizedCutRod(arr, size)<<endl;
+    stop_s=clock();
+    cout << "time: " << (stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 << endl;
+    start_s=clock();
     cout<<BottomUpCutRod(arr, size)<<endl;
+    stop_s=clock();
+    cout << "time: " << (stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 << endl;
+    start_s=clock();
     ExtendedBottomUpCutRod(arr, size);
+    stop_s=clock();
+    cout << "time: " << (stop_s-start_s)/double(CLOCKS_PER_SEC)*1000 << endl;
     return 0;
 }
+
+// OUTPUT
+// 30
+// time: 0.114
+// 30
+// time: 0.034
+// 30
+// time: 0.005
+// 1 10 time: 0.003
